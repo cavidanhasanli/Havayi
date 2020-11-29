@@ -21,6 +21,7 @@ class BlankCredit(models.Model):
     credit_type = models.CharField(max_length=100, null=True, blank=True)
     date = models.DateTimeField(auto_now=True, auto_created=True)
     send_user_num = models.IntegerField()
+    otp_status = models.BooleanField("otp status", default=False)
 
     def __str__(self):
         return f'{self.name} {self.surname} | Credit Type : {self.credit_type} | User Number : {self.send_user_num}'

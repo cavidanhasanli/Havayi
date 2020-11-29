@@ -5,6 +5,10 @@ from .models import *
 import random
 
 
+def home(request):
+    return render(request, 'home.html')
+
+
 def login(request):
     if request.method == 'POST':
         username = request.POST['username']
