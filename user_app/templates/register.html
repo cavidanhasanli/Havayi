@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+</head>
+<body>
+<div style="text-align: center; border: red solid 3px; margin: 65px 500px">
+    <h2>Sign up</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="username" id="name" placeholder="User Name"/>
+        <br>
+        <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number"/>
+        <br>
+        <input type="password" name="password1" id="pass" placeholder="Password"/>
+        <br>
+        <input type="password" name="password2" id="re_pass" placeholder="Repeat your password"/>
+        <br>
+        <br>
+        <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+    </form>
+    <br>
+    <br>
+</div>
+<br>
+<br>
+<div style="text-align: center;">
+    <a href="{% url 'login' %}" >Login page</a>
+    <div style="text-align: center">
+        {% for message in messages %}
+            <h3 style="color: red" ;> {{ message }} </h3>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>

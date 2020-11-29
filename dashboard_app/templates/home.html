@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% for c in credit_fields %}
+        <a href="{% url 'credit' slug=c.credit_slug %}"><h1>{{ c.credit_name }}</h1></a>
+    {% endfor %}
+</body>
+</html>

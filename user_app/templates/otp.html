@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP page</title>
+</head>
+<body>
+<div style="text-align: center; border: red solid 3px; margin: 65px 500px">
+    <h2>OTP code</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="otp" id="otp_code" placeholder="OTP code"/>
+        <br>
+        <br>
+        <input type="submit" name="otp_code" id="otp" class="form-submit" value="OTP"/>
+    </form>
+    <br>
+    <br>
+</div>
+<br>
+<br>
+<div style="text-align: center;">
+    <div style="text-align: center">
+        {% for message in messages %}
+            <h3 style="color: red" ;> {{ message }} </h3>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>
