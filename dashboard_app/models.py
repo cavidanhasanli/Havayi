@@ -12,6 +12,14 @@ class CreditFields(models.Model):
         return self.credit_name
 
 
+class BankList(models.Model):
+    bank_name = models.CharField(max_length=100, null=True, blank=True)
+    bank_email = models.EmailField(null=True, blank=True)
+
+    def __str__(self):
+        return self.bank_name
+
+
 class BlankCredit(models.Model):
     user_id = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100, null=True, blank=True)
@@ -22,6 +30,7 @@ class BlankCredit(models.Model):
     date = models.DateTimeField(auto_now=True, auto_created=True)
     send_user_num = models.IntegerField()
     otp_status = models.BooleanField("otp status", default=False)
+    bank_id = models.ForeignKey(BankList, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f'{self.name} {self.surname} | Credit Type : {self.credit_type} | User Number : {self.send_user_num}'
