@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user_app.apps.UserAppConfig', # register user_app app
     'dashboard_app.apps.DashboardAppConfig', # register dashboard_app app
+    'celery'
 ]
 
 AUTH_USER_MODEL = 'user_app.MyUser'
@@ -128,5 +129,14 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST_USER = 'cavidan.mahmudoglu@gmail.com'
+EMAIL_HOST_PASSWORD = 'zaur2552'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 

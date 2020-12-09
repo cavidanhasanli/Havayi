@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,HttpResponse
 from dashboard_app.models import CreditFields, BlankCredit
 from user_app.models import MyUser, PhoneOTP
 from django.contrib import messages
@@ -16,8 +16,7 @@ def credit_page(request):
 def credit(request, slug):
     if request.method == 'POST':
         print(request.user.username)
-        name = request.POST['name']
-        surname = request.POST['surname']
+        name_surname = request.POST['name_surname']
         phone_number = request.POST['phone_number']
         amount = request.POST['amount']
         print(bool(amount))
@@ -27,8 +26,7 @@ def credit(request, slug):
         if phone_number[0:4] == "+994" and phone_number[5:].isdigit() and len(phone_number) == 13:
             if amount:
                 BlankCredit.objects.create(user_id=user_id,
-                                           name=name,
-                                           surname=surname,
+                                           name_surname=name_surname,
                                            phone_number=phone_number,
                                            amount=amount,
                                            credit_type=credit_type,
@@ -40,8 +38,7 @@ def credit(request, slug):
 
             else:
                 BlankCredit.objects.create(user_id=user_id,
-                                           name=name,
-                                           surname=surname,
+                                           name_surname=name_surname,
                                            phone_number=phone_number,
                                            amount=1000,
                                            credit_type=credit_type,

@@ -22,8 +22,7 @@ class BankList(models.Model):
 
 class BlankCredit(models.Model):
     user_id = models.ForeignKey(MyUser, on_delete=models.CASCADE, null=True, blank=True)
-    name = models.CharField(max_length=100, null=True, blank=True)
-    surname = models.CharField(max_length=100, null=True, blank=True)
+    name_surname = models.CharField(max_length=100, null=True, blank=True)
     phone_number = models.CharField(max_length=100, null=True, blank=True, unique=True)
     amount = models.IntegerField()
     credit_type = models.CharField(max_length=100, null=True, blank=True)
@@ -33,4 +32,4 @@ class BlankCredit(models.Model):
     bank_id = models.ForeignKey(BankList, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.name} {self.surname} | Credit Type : {self.credit_type} | User Number : {self.send_user_num}'
+        return f'{self.name_surname} | Credit Type : {self.credit_type} | User Number : {self.send_user_num}'
