@@ -1,34 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div style="text-align: center; border: red solid 3px; margin: 65px 500px">
-    <h2>Send for bank blank</h2>
-    <form method="POST">
-        {% csrf_token %}
-        <input type="text" name="name_surname" id="name_surname" placeholder="Name/Surname"/>
-        <br>
-        <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number"/>
-        <br>
-        <input type="number" name="amount" id="amount" placeholder="Amount"/>
-        <br>
-        <br>
-        <input type="submit" name="send" id="send" class="form-submit" value="Send"/>
-    </form>
-    <br>
-    <br>
-</div>
-<br>
-<br>
-<div style="text-align: center;">
-    <div style="text-align: center">
-        {% for message in messages %}
-            <h3 style="color: red" ;> {{ message }} </h3>
-        {% endfor %}
-    </div>
-</div>
-</body>
-</html>
+{% extends 'havayi_base/base.html' %}
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'havayi_static/css/cash-credit.css' %}">
+     <section class="main-name">
+        <div class="text-center">Nağd Kredit</div>
+    </section>
+
+    <section class="services">
+        <div class="container shadows bg-white">
+            <form class="row position-relative " style="padding: 30px 0px" method="POST">
+                {% csrf_token %}
+                <div class="col-lg-3 col-12 d-flex justify-content-center input-items flex-column text-center">
+                    <label class="header-input">Ad, Soyad</label>
+                    <div class="input-items-field">
+                        <input class=" w-100" type="text" name="name_surname" style="padding: 0px 10px;"></div>
+
+                </div>
+                <div class="col-lg-3 col-12 d-flex justify-content-center input-items flex-column text-center">
+                    <label class="header-input">Əlaqə Nömrəsi</label>
+                    <div class="input-items-field">
+                        <input class=" w-100" type="text" name="phone_number" style="padding: 0px 10px;"></div>
+
+                </div>
+
+                <div class="col-lg-3 col-12 d-flex justify-content-center input-items flex-column text-center">
+                    <label class="header-input">Kredit Məbləği</label>
+                    <div class="input-items-field">
+                        <input class=" w-100" type="number" name="amount" style="padding: 0px 10px;"></div>
+
+                </div>
+
+                <div class="col-lg-3 col-12 d-flex justify-content-center input-items flex-column text-center send-button">
+                    <div class="input-items-field">
+                        <input type="submit" name="send" id="send" class=" w-100 " value="Göndər"/>
+
+                    </div>
+                </div>
+            </form>
+    </section>
+{% endblock %}

@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'havayi_base/base.html' %}
+{% block content %}
+     <section class="main-name">
+        <div class="text-center">Daxil Olun</div>
+    </section>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title> Sign in </title>
-</head>
-<body>
-<div style="text-align: center; border: red solid 3px; margin: 65px 500px">
+    <section class="services">
+        <div class="container shadows bg-white">
+            <form class="row position-relative " style="padding: 30px 0px" method="POST">
+                {% csrf_token %}
+                <div class="col-12 d-flex justify-content-center input-items flex-column text-center">
+                    <label class="header-input">Istifadeci adi</label>
+                    <div class="input-items-field">
+                        <input class="rounded-pill w-100" ttype="text" name="username" style="padding: 0px 10px;"></div>
 
-                <div>
-                    <h2>Sign in</h2>
-                    <form method="POST">
-                        {% csrf_token %}
-                        <input type="text" name="username" id="your_name" placeholder="Your Name"/>
-                        <br>
-                        <br>
-                        <input type="password" name="password" id="your_pass" placeholder="Password"/>
-                        <br>
-                        <br>
-                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                </div>
+                <div class="col-12 d-flex justify-content-center input-items flex-column text-center">
+                    <label class="header-input">Parol</label>
+                    <div class="input-items-field">
+                        <input class="rounded-pill w-100" type="password" name="password" style="padding: 0px 10px;"></div>
 
-                    </form>
-                    <div style="text-align: center">
+                </div>
+
+                <div class="col-12 d-flex justify-content-center input-items flex-column text-center">
+                    <div class="input-items-field">
+
+                        <input type="submit" name="signin" id="signin" class="rounded-pill w-100 " value="Daxil ol"/>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <div style="text-align: center">
                         {% for message in messages %}
                             <h3 style="color: red" ;> {{ message }} </h3>
                         {% endfor %}
                     </div>
-                </div>
-                <br>
-                <br>
-                <div>
-                    <a href="{% url 'register' %}">Create an account</a>
-                </div>
-            </div>
-</body>
-</html>
+{% endblock %}
+

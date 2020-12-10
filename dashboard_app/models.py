@@ -30,6 +30,7 @@ class BlankCredit(models.Model):
     send_user_num = models.IntegerField()
     otp_status = models.BooleanField("otp status", default=False)
     bank_id = models.ForeignKey(BankList, on_delete=models.CASCADE, null=True, blank=True)
+    # file_field = models.FileField(upload_to='user_files',null=True,blank=True)
 
     def __str__(self):
         return f'{self.name_surname} | Credit Type : {self.credit_type} | User Number : {self.send_user_num}'

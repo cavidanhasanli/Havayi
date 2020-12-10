@@ -1,26 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>OTP page</title>
-</head>
-<body>
-<div style="text-align: center; border: red solid 3px; margin: 65px 500px">
-    <h2>OTP code</h2>
-    <form method="POST">
-        {% csrf_token %}
+{% extends 'havayi_base/base.html' %}
+{% block content %}
 
-        <input type="text" name="otp" id="otp_code" placeholder="OTP code"/>
-        <br>
-        <br>
-        <input type="submit" name="otp_code" id="otp" class="form-submit" value="OTP"/>
-    </form>
-    <br>
-    <br>
-</div>
-<br>
-<br>
-<div style="text-align: center;">
+    <section class="main-name">
+        <div class="text-center">OTP</div>
+    </section>
+
+    <div class="container shadows bg-white">
+        <form class="row position-relative " style="padding: 30px 0px" method="POST">
+            {% csrf_token %}
+            <div class="col-12 d-flex justify-content-center input-items flex-column text-center">
+                <label class="header-input">OTP kodu daxil edin</label>
+                <div class="input-items-field">
+                    <input class="rounded-pill w-100" type="text" name="otp" style="padding: 0px 10px;"></div>
+
+            </div>
+
+            <div class="col-12 d-flex justify-content-center input-items flex-column text-center">
+                <div class="input-items-field">
+                    <input type="submit" name="otp_code" class="rounded-pill w-100 " value="Tesdiq et"/>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div style="text-align: center;">
     <div style="text-align: center">
         {% for message in messages %}
             <h3 style="color: red" ;> {{ message }} </h3>
@@ -28,5 +31,4 @@
     </div>
 </div>
 
-</body>
-</html>
+{% endblock %}

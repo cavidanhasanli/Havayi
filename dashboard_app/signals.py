@@ -7,6 +7,6 @@ from dashboard_app.models import BankList
 
 @receiver(post_save,sender=BankList)
 def bank_send_mail(sender,instance,created,**kwargs):
-    print('INSTANCE:',instance)
+    # print('INSTANCE:',instance)
     background = Thread(target=send_mail_task, args=[instance])
     background.start()

@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    {% for c in credit_fields %}
-        <a href="{% url 'credit' slug=c.credit_slug %}"><h1>{{ c.credit_name }}</h1></a>
-    {% endfor %}
-</body>
-</html>
+{% extends 'havayi_base/base.html' %}
+{% block content %}
+
+     <section class="main-name">
+            <div class="text-center">Kredit</div>
+        </section>
+
+    <section class="services ">
+        <div class="container shadows bg-white">
+            <div class="row" style="padding: 30px 50px">
+                {% for c in credit_fields %}
+                <div class="col-lg-6 col-12 d-flex justify-content-center items">
+                    <a  href="{% url 'credit' slug=c.credit_slug %}">
+                        <div class="service-item rounded-pill">{{ c.credit_name }}</div>
+                    </a>
+
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

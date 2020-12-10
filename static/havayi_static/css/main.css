@@ -1,0 +1,97 @@
+
+*{    
+    margin: 0;
+    padding: 0; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body{
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    background: #f8f8f8;
+}
+
+.service-item{
+    font-size: 25px;
+    width: 400px;
+    height: 60px;
+    color: white;
+    background: #00ce24;
+    display: flex;
+    justify-content: center;
+    transition: 0.4s all ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-item:hover{
+    background: green;
+}
+
+.services a{
+    text-decoration: none;
+}
+
+.main-name{
+    font-size: 50px;
+    color: #414141;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.shadows{
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.176);
+}
+
+
+
+/* .main-name div{
+    font-family
+} */
+
+.service-end{
+    color: #414141;
+    font-size: 15px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* .services .items{
+    margin-bottom: 20px;
+} */
+
+.services .items:nth-last-child(2){
+    margin-bottom: 0px;
+}
+
+@media screen and (max-width: 991px){
+    .services .items{
+        margin-bottom: 20px !important;
+    }
+    .services .items:last-of-type{
+        margin-bottom: 0px !important;
+    }
+}
+
+@media screen and (max-width: 720px){
+    .main-name{
+        font-size: 30px;
+    }
+    .service-item{
+        font-size: 20px;
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .container{
+    max-width: 1170px !important;
+    }
+}
+
+@media screen and (max-width: 575px){
+    .services{
+        padding: 0px 15px !important;
+    }
+}

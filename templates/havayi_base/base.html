@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load  static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'havayi_static//css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'havayi_static/css/bootstrap-reboot.css' %}">
+    <link rel="stylesheet" href="{% static 'havayi_static/css/bootstrap-reboot.min.css' %}">
+    <link rel="stylesheet" href="{% static 'havayi_static/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'havayi_static/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'havayi_static/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'havayi_static/css/navbar.css' %}">
+{#    <link rel="stylesheet" href="{% static 'havayi_static/css/sign-up.css' %}">#}
+     <link rel="stylesheet" href="{% static 'havayi_static/css/page-credit.css' %}">
+    <title>Əsas Səhifə</title>
+</head>
+
+<body>
+
+    <header class="bg-white shadows">
+        <div class="container p-0 ">
+            <div class="row m-0 justify-content-between align-items-center for-mobile" style="padding:10px 0px">
+                <div class="text-center d-flex align-items-center">
+                    <a href="main.html" style="width: 80px;height:43px">
+                        <img width="100%" height="100%" src="{% static 'havayi_static/img/havayi-pngsi.png' %}" alt="">
+                    </a>
+                    <div class="d-lg-block d-none">
+                        <ul class="d-flex m-0 menu-items ml-3 ">
+                            <li>
+                                <a href="main.html">Ana Səhifə</a>
+                            </li>
+                            <li>
+                                <a href="page-credit.html">Kreditlər</a>
+                            </li>
+                            <li>
+                                <a href="#">Sığorta</a>
+                            </li>
+                            <li>
+                                <a href="#">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="#">Haqqımızda</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-lg-none d-block">
+                        <div style="cursor: pointer;"  class="collapsed ml-3">
+                            <img id="hamburger" src="{% static 'havayi_static/img/square.png' %}" width="25px" alt="">
+                        </div>
+                    </div>
+                    <div class="mobile-menu d-lg-none" id="view-mobile-menu">
+                        <div class="exit-figure">
+                            <img class="exit-figure-img" id="exit-figure-img" style="cursor: pointer;"
+                                src="{% static 'havayi_static/img/cancel.png' %}" width="20px" alt="">
+                        </div>
+                        <ul class="d-flex flex-column  m-0 menu-items ml-3 ">
+                            <li>
+                                <a href="main.html">
+                                    <div>Ana Səhifə</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="main.html">
+                                    <div>Kreditlər</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="main.html">
+                                    <div>Sığorta</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="main.html">
+                                    <div>FAQ</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="main.html">
+                                    <div>Haqqımızda</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-info d-flex justify-content-end">
+                    <a  class="header-button-style" href="login.html">Daxil ol</a>
+                    <a class="header-button-style"  href="sign-up.html">Qeydiyyat</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+
+<section>
+        <div class="service-end d-flex justify-content-center">
+            <p>Bütün hüquqlar qorunur. Khan Buta Group MMC.</p>
+        </div>
+    </section>
+
+
+    <script src="{% static 'havayi_static/js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'havayi_static/js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'havayi_static/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'havayi_static/js/bootstrap.js' %}"></script>
+    <script src="{% static 'havayi_static/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'havayi_static/js/main.js' %}"></script>
+
+</body>
+
+</html>
