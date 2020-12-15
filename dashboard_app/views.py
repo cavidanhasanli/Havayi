@@ -1,98 +1,92 @@
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render, redirect
 from dashboard_app.models import CreditFields, BlankCredit
 from user_app.models import MyUser, PhoneOTP
 from django.contrib import messages
 from user_app.views import otp_generator
-import csv
 
- 
-@login_required
+
 def credit_page(request):
     credit_fields = CreditFields.objects.all()
-    context = {'credit_fields': credit_fields}
+    context = {'credit_fields': credit_fields, 'title':'Kreditlər'}
     return render(request, 'credit_page.html', context)
 
 
 def credit(request, slug):
+    context = {'title':f'Kredit {slug}'}
     if request.method == 'POST':
         print(request.user.username)
         name_surname = request.POST['name_surname']
         phone_number = request.POST['phone_number']
         amount = request.POST['amount']
         credit_type = slug
-        user_id = MyUser.objects.get(username=request.user.username)
+
+        try:
+            user_id = MyUser.objects.get(username=request.user.username)
+        except MyUser.DoesNotExist:
+            user_id = None
 
         if phone_number[0:4] == "+994" and phone_number[5:].isdigit() and len(phone_number) == 13:
-            if amount:
-                files = open(f'UserId:{user_id.MY_USER_ID}.csv', 'w',newline='')
-                with files:
-                    header = ['Ad/Soyad',
-                              'Əlaqə Nömrə',
-                              'Müraciət olunan kredit məbləği',
-                              'ID',
-                              'Təsdiqlənmiş kredit məbləği',
-                              'Status',
-                              'Kreditin növü',
-                              'Bank']
-                    writer = csv.DictWriter(files,fieldnames=header)
-                    writer.writeheader()
-                    writer.writerow({'Ad/Soyad':name_surname,
-                                    'Əlaqə Nömrə':phone_number,
-                                     'Müraciət olunan kredit məbləği':amount,
-                                     'ID':user_id.MY_USER_ID,
-                                     'Kreditin növü':credit_type,})
+            if user_id:
+                if amount:
+                    BlankCredit.objects.create(user_id=user_id,
+                                               name_surname=name_surname,
+                                               phone_number=phone_number,
+                                               amount=amount,
+                                               credit_type=credit_type,
+                                               send_user_num=user_id.MY_USER_ID,
+                                               otp_status=False)
+                    otp_code = otp_generator(phone_number)
+                    PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
+                    return redirect('otp_code', phone_number)
 
-                BlankCredit.objects.create(user_id=user_id,
-                                           name_surname=name_surname,
-                                           phone_number=phone_number,
-                                           amount=amount,
-                                           credit_type=credit_type,
-                                           send_user_num=user_id.MY_USER_ID,
-                                           otp_status=False)
-                otp_code = otp_generator(phone_number)
-                PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
-                return redirect('otp_code', phone_number)
+                else:
+                    BlankCredit.objects.create(user_id=user_id,
+                                               name_surname=name_surname,
+                                               phone_number=phone_number,
+                                               amount=1000,
+                                               credit_type=credit_type,
+                                               send_user_num=user_id.MY_USER_ID,
+                                               otp_status=False)
+                    otp_code = otp_generator(phone_number)
+                    PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
+                    return redirect('otp_code', phone_number)
 
             else:
+                if amount:
+                    BlankCredit.objects.create(user_id=user_id,
+                                               name_surname=name_surname,
+                                               phone_number=phone_number,
+                                               amount=amount,
+                                               credit_type=credit_type,
+                                               send_user_num=0,
+                                               otp_status=False)
+                    otp_code = otp_generator(phone_number)
+                    PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
+                    return redirect('otp_code', phone_number)
 
-                # files = open(f'UserId:{user_id.MY_USER_ID}.csv', 'w', newline='')
-                # with files:
-                #     header = ['Ad/Soyad',
-                #               'Əlaqə Nömrə',
-                #               'Müraciət olunan kredit məbləği',
-                #               'ID',
-                #               'Təsdiqlənmiş kredit məbləği',
-                #               'Status',
-                #               'Kreditin növü',
-                #               'Bank']
-                #     writer = csv.DictWriter(files, fieldnames=header)
-                #     writer.writeheader()
-                #     writer.writerow({'Ad/Soyad': name_surname,
-                #                      'Əlaqə Nömrə': phone_number,
-                #                      'Müraciət olunan kredit məbləği': 1000,
-                #                      'ID': user_id.MY_USER_ID,
-                #                      'Kreditin növü': credit_type, })
+                else:
+                    BlankCredit.objects.create(user_id=user_id,
+                                               name_surname=name_surname,
+                                               phone_number=phone_number,
+                                               amount=1000,
+                                               credit_type=credit_type,
+                                               send_user_num=0,
+                                               otp_status=False)
 
-                BlankCredit.objects.create(user_id=user_id,
-                                           name_surname=name_surname,
-                                           phone_number=phone_number,
-                                           amount=1000,
-                                           credit_type=credit_type,
-                                           send_user_num=user_id.MY_USER_ID,
-                                           otp_status=False)
-                otp_code = otp_generator(phone_number)
-                PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
-                return redirect('otp_code', phone_number)
+                    otp_code = otp_generator(phone_number)
+                    PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
+                    return redirect('otp_code', phone_number)
+
 
         else:
             messages.info(request, "phone number not matching...(+994xxxxxxxxx)")
             return redirect('register')
 
-    return render(request, 'credit_type.html')
+    return render(request, 'credit_type.html',context)
 
 
 def otp_views(request, phone_number):
+    context = {'title': 'Otp Code'}
     check = PhoneOTP.objects.get(phone=phone_number)
     otp_change_status = BlankCredit.objects.get(phone_number=phone_number)
 
@@ -113,4 +107,4 @@ def otp_views(request, phone_number):
             messages.info(request, "OTP code un yazilisi yanlisdir")
             return redirect('otp_code', phone_number)
 
-    return render(request, 'otp_code.html')
+    return render(request, 'otp_code.html',context)

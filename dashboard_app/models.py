@@ -38,3 +38,4 @@ class BlankCredit(models.Model):
 
     def __str__(self):
         return f'{self.name_surname} | Credit Type : {self.credit_type} | User Number : {self.send_user_num}'
+

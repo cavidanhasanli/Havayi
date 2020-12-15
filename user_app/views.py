@@ -3,13 +3,16 @@ from django.contrib.auth.models import auth
 from django.contrib import messages
 from .models import *
 import random
-
+from profile_app.models import *
 
 def home(request):
-    return render(request, 'home.html')
+    context = {'title': 'Ana Səhifə'}
+    print(BankFiles.objects.all())
+    return render(request, 'home.html',context)
 
 
 def login(request):
+    context = {'title': 'Daxil ol'}
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -35,10 +38,11 @@ def login(request):
 
 
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html',context)
 
 
 def register(request):
+    context = {'title': 'Qeydiyyat'}
     if request.method == 'POST':
         user_name = request.POST['username']
         phone_number = request.POST['phone_number']
@@ -83,7 +87,7 @@ def register(request):
             return redirect('register')
 
     else:
-        return render(request, 'register.html')
+        return render(request, 'register.html',context)
 
 
 def logout(request):
@@ -92,6 +96,7 @@ def logout(request):
 
 
 def otp_views(request, phone_number):
+    context = {'title': 'Otp code'}
     check = PhoneOTP.objects.get(phone=phone_number)
     user = MyUser.objects.get(phone=phone_number)
     if request.method == 'POST':
@@ -109,7 +114,7 @@ def otp_views(request, phone_number):
             messages.info(request, "OTP code un yazilisi yanlisdir")
             return redirect('otp', phone_number)
 
-    return render(request, 'otp.html')
+    return render(request, 'otp.html',context)
 
 
 def otp_generator(phone):

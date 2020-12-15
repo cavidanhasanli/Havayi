@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/png" href="{% static 'havayi_static/img/havayi-pngsi.png' %}"/>
     <link rel="stylesheet" href="{% static 'havayi_static//css/bootstrap-grid.css' %}">
     <link rel="stylesheet" href="{% static 'havayi_static/css/bootstrap-reboot.css' %}">
     <link rel="stylesheet" href="{% static 'havayi_static/css/bootstrap-reboot.min.css' %}">
@@ -15,7 +19,8 @@
     <link rel="stylesheet" href="{% static 'havayi_static/css/navbar.css' %}">
 {#    <link rel="stylesheet" href="{% static 'havayi_static/css/sign-up.css' %}">#}
      <link rel="stylesheet" href="{% static 'havayi_static/css/page-credit.css' %}">
-    <title>Əsas Səhifə</title>
+    <link rel="stylesheet" href="{% static 'havayi_static/css/personal-page.css' %}">
+
 </head>
 
 <body>
@@ -24,16 +29,16 @@
         <div class="container p-0 ">
             <div class="row m-0 justify-content-between align-items-center for-mobile" style="padding:10px 0px">
                 <div class="text-center d-flex align-items-center">
-                    <a href="main.html" style="width: 80px;height:43px">
+                    <a href="{% url 'home' %}" style="width: 80px;height:43px">
                         <img width="100%" height="100%" src="{% static 'havayi_static/img/havayi-pngsi.png' %}" alt="">
                     </a>
                     <div class="d-lg-block d-none">
                         <ul class="d-flex m-0 menu-items ml-3 ">
                             <li>
-                                <a href="main.html">Ana Səhifə</a>
+                                <a href="{% url 'home' %}">Ana Səhifə</a>
                             </li>
                             <li>
-                                <a href="page-credit.html">Kreditlər</a>
+                                <a href="{% url 'credit_page' %}">Kreditlər</a>
                             </li>
                             <li>
                                 <a href="#">Sığorta</a>
@@ -58,50 +63,57 @@
                         </div>
                         <ul class="d-flex flex-column  m-0 menu-items ml-3 ">
                             <li>
-                                <a href="main.html">
+                                <a href="{% url 'home' %}">
                                     <div>Ana Səhifə</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="main.html">
+                                <a href="{% url 'credit_page' %}">
                                     <div>Kreditlər</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="main.html">
+                                <a href="#">
                                     <div>Sığorta</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="main.html">
+                                <a href="#">
                                     <div>FAQ</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="main.html">
+                                <a href="#">
                                     <div>Haqqımızda</div>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                {% if  request.user.is_authenticated %}
                 <div class="header-info d-flex justify-content-end">
-                    <a  class="header-button-style" href="login.html">Daxil ol</a>
-                    <a class="header-button-style"  href="sign-up.html">Qeydiyyat</a>
+                    <a  class="header-button-style" href="{% url 'profile_links' request.user %}">Şəxsi Kabinet</a>
+
+                    <a  class="header-button-style" href="{% url 'logout' %}">Çıxış</a>
                 </div>
+                    {% else %}
+                    <div class="header-info d-flex justify-content-end">
+                    <a  class="header-button-style" href="{% url 'login' %}">Daxil ol</a>
+                    <a class="header-button-style"  href="{% url 'register' %}">Qeydiyyat</a>
+                </div>
+                {% endif %}
+
             </div>
         </div>
     </header>
 
     {% block content %}{% endblock %}
 
-
 <section>
         <div class="service-end d-flex justify-content-center">
             <p>Bütün hüquqlar qorunur. Khan Buta Group MMC.</p>
         </div>
-    </section>
-
+</section>
 
     <script src="{% static 'havayi_static/js/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'havayi_static/js/bootstrap.bundle.js' %}"></script>
@@ -111,5 +123,4 @@
     <script src="{% static 'havayi_static/js/main.js' %}"></script>
 
 </body>
-
 </html>

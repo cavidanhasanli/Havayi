@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user_app.apps.UserAppConfig', # register user_app app
     'dashboard_app.apps.DashboardAppConfig', # register dashboard_app app
+    'profile_app.apps.ProfileAppConfig', # register profile_app app
     'celery'
 ]
 

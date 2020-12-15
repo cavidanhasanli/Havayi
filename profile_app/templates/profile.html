@@ -1,0 +1,129 @@
+{% extends 'havayi_base/base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% load static %}
+{% block content %}
+      <section>
+        <div class="container p-0">
+            <div class="row mx-0" style="margin-top:30px;">
+                <div class="col-lg-3 col-md-4 col-12 ">
+                    <div class="mb-4 balance left-side-balance shadows">
+                        <h4 class="m-0">Balans</h4>
+                        <div class="d-flex align-items-center">
+                            <span class="d-flex"><svg width="15px" height="12px" viewBox="0 0 210 180" version="1.1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    style="/*! background: red; */">
+                                    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+                                    <title>Path</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <path
+                                            d="M210,180 L180,180 L180,135 C180,98.699219 154.199219,68.398438 120,61.5 L120,150 L90,150 L90,61.5 C55.800781,68.398438 30,98.699219 30,135 L30,180 L0,180 L0,135 C0,82.199219 39.300781,38.398438 90,31.199219 L90,0 L120,0 L120,31.199219 C170.699219,38.398438 210,82.199219 210,135 L210,180 Z"
+                                            id="Path" fill="#414141" />
+                                    </g>
+                                </svg></span> <span class="ml-1" style="font-size: 1.3rem">10.00</span>
+                        </div>
+                        <!-- <div style="opacity: 0.8;" class="d-flex justify-content-between">
+                            <div>Gözləyən Məbləğ</div>
+                            <div class="d-flex align-items-center">
+                                <span class="d-flex"><svg width="12px" height="9px" viewBox="0 0 210 180" version="1.1"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        style="/*! background: red; */">
+                                        <title>Path</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <path
+                                                d="M210,180 L180,180 L180,135 C180,98.699219 154.199219,68.398438 120,61.5 L120,150 L90,150 L90,61.5 C55.800781,68.398438 30,98.699219 30,135 L30,180 L0,180 L0,135 C0,82.199219 39.300781,38.398438 90,31.199219 L90,0 L120,0 L120,31.199219 C170.699219,38.398438 210,82.199219 210,135 L210,180 Z"
+                                                id="Path" fill="#414141" />
+                                        </g>
+                                    </svg></span><span class="ml-1">5.00</span>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="down-arrow">
+                        <div class="down-arrow-menu" id="down-arrow-menu">
+                            <div>Menyu</div>
+                            <div><i class="arrow-icon fa fa-angle-down" style="font-size:24px"></i></div>
+                        </div>
+                    </div>
+                    <div class="balance personal-page-list p-0 shadows position-relative">
+                        <ul class="m-0 d-md-block left-side-menu">
+                            <li>
+                                <a href="">
+                                    <div>Əsas Səhifə</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div>Köçürmə</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div>Əməliyyat tarixçəsi</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div>İstifadə qaydaları</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div>Qanunvericilik</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <div> FAQ</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8 col-12">
+                    <div class="balance header-sending-information shadows row m-0">
+                        <div class="w-100 mb-2">
+                            <h3>Köçürmə məlumatları</h3>
+                        </div>
+                        <div class="col-lg-6 mb-lg-0">
+                            <div class="shadows sending-information sending-count">
+
+                                <label class="header-input">Köçürüləcək məbləğ</label>
+                                <div class="input-items-field">
+                                    <input class="w-100" type="text" style="padding: 0px 10px;">
+                                    <p style="font-size: 12px;opacity:0.8;" class="mt-1 mb-0">min:20 AZN, maks:500 AZN</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+                            <div class="shadows sending-information">
+                                <div class="d-flex align-items-center flex-column" style="margin-bottom: 10px">
+                                    <label class="header-input">Mədaxil ediləcək kart</label>
+                                    <div class="input-items-field">
+                                        <input class="w-100" type="text" style="padding: 0px 10px;">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column">
+                                    <label class="header-input">Vəsaiti alan</label>
+                                    <div class="input-items-field">
+                                        <input placeholder="Ad" class="w-100" type="text" style="padding: 0px 10px;">
+                                    </div>
+                                    <div class="mt-2 input-items-field">
+                                        <input placeholder="Soyad" class="w-100" type="text" style="padding: 0px 10px;">
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center flex-column mt-5">
+                                    <div class="input-items-field">
+                                        <button class="w-100 m">Köçürmə et</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
