@@ -18,8 +18,10 @@
     <link rel="stylesheet" href="{% static 'havayi_static/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'havayi_static/css/navbar.css' %}">
 {#    <link rel="stylesheet" href="{% static 'havayi_static/css/sign-up.css' %}">#}
-     <link rel="stylesheet" href="{% static 'havayi_static/css/page-credit.css' %}">
-    <link rel="stylesheet" href="{% static 'havayi_static/css/personal-page.css' %}">
+
+    {% block css %}
+
+    {% endblock %}
 
 </head>
 
@@ -121,6 +123,12 @@
     <script src="{% static 'havayi_static/js/bootstrap.js' %}"></script>
     <script src="{% static 'havayi_static/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'havayi_static/js/main.js' %}"></script>
+
+
+    {% block js %}
+
+    {% endblock %}
+
 
 </body>
 </html>

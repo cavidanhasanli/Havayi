@@ -1,5 +1,11 @@
 {% extends 'havayi_base/base.html' %}
 {% block title %}{{ title }}{% endblock %}
+{% load  static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'havayi_static/css/login.css' %}">
+{% endblock %}
+
 {% block content %}
      <section class="main-name">
         <div class="text-center">Daxil Olun</div>

@@ -2,8 +2,12 @@
 {% block title %}{{ title }}{% endblock %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'havayi_static/css/cash-credit.css' %}">
+{% endblock %}
+
 {% block content %}
-    <link rel="stylesheet" href="{% static 'havayi_static/css/cash-credit.css' %}">
+    
      <section class="main-name">
         <div class="text-center">Nağd Kredit</div>
     </section>
