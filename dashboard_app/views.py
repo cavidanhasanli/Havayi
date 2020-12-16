@@ -58,7 +58,7 @@ def credit(request, slug):
                                                phone_number=phone_number,
                                                amount=amount,
                                                credit_type=credit_type,
-                                               send_user_num=0,
+                                               send_user_num='0',
                                                otp_status=False)
                     otp_code = otp_generator(phone_number)
                     PhoneOTP.objects.create(phone=phone_number, otp=otp_code)
@@ -70,7 +70,7 @@ def credit(request, slug):
                                                phone_number=phone_number,
                                                amount=1000,
                                                credit_type=credit_type,
-                                               send_user_num=0,
+                                               send_user_num='0',
                                                otp_status=False)
 
                     otp_code = otp_generator(phone_number)
