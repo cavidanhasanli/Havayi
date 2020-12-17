@@ -34,13 +34,14 @@ def csv_reader(files,request):
 
                     for num in bank_filter:
 
-                        h = float(row['Təsdiqlənmiş kredit məbləği']) * num.interest / 2
-
                         if row['ID'] == '0':
-                            print(h)
+                            no_register = float(row['Təsdiqlənmiş kredit məbləği']) * num.interest
+                            print(no_register)
                         else:
+                            register = float(row['Təsdiqlənmiş kredit məbləği']) * num.interest / 2
+
                             user_cashback = MyUser.objects.get(MY_USER_ID=str(row['ID']))
-                            user_cashback.cash_back = user_cashback.cash_back + float(h)
+                            user_cashback.cash_back = user_cashback.cash_back + float(register)
                             user_cashback.save()
 
                 else:

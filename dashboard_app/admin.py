@@ -27,7 +27,7 @@ class BlankCreditAdmin(admin.ModelAdmin):
 
     def send_invite(self, request, queryset):
         for email in queryset:
-
+            print(email)
             bank_send_mail(sender=None, instance=email, created=None)
 
     send_invite.short_description = "Send invitation"
