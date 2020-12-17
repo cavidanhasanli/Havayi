@@ -36,7 +36,6 @@ def login(request):
             messages.info(request, 'Bele bir istifadeci yoxdur..')
             return redirect('login')
 
-
     else:
         return render(request, 'login.html',context)
 
@@ -48,8 +47,6 @@ def register(request):
         phone_number = request.POST['phone_number']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-        print(password1)
-        print(password2)
 
         if password1 == password2:
             if MyUser.objects.filter(username=user_name).exists():

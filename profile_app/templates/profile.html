@@ -25,7 +25,7 @@
                                             d="M210,180 L180,180 L180,135 C180,98.699219 154.199219,68.398438 120,61.5 L120,150 L90,150 L90,61.5 C55.800781,68.398438 30,98.699219 30,135 L30,180 L0,180 L0,135 C0,82.199219 39.300781,38.398438 90,31.199219 L90,0 L120,0 L120,31.199219 C170.699219,38.398438 210,82.199219 210,135 L210,180 Z"
                                             id="Path" fill="#414141" />
                                     </g>
-                                </svg></span> <span class="ml-1" style="font-size: 1.3rem">10.00</span>
+                                </svg></span> {% for c in user_cash %}<span class="ml-1" style="font-size: 1.3rem">{{ c.cash_back }}</span>{% endfor %}
                         </div>
                         <!-- <div style="opacity: 0.8;" class="d-flex justify-content-between">
                             <div>Gözləyən Məbləğ</div>
@@ -53,32 +53,32 @@
                     <div class="balance personal-page-list p-0 shadows position-relative">
                         <ul class="m-0 d-md-block left-side-menu">
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <div>Əsas Səhifə</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <div>Köçürmə</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <div>Əməliyyat tarixçəsi</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <div>İstifadə qaydaları</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <div>Qanunvericilik</div>
                                 </a>
                             </li>
                             <li>
-                                <a href="">
+                                <a href="#">
                                     <div> FAQ</div>
                                 </a>
                             </li>
