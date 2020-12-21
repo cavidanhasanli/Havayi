@@ -170,7 +170,6 @@ JAZZMIN_SETTINGS = {
 }
 
 JAZZMIN_UI_TWEAKS = {
-
     "theme": "flatly",
     "dark_mode_theme": "darkly",
 }
@@ -269,12 +268,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-else:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static")
-    ]
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
