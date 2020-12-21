@@ -4,23 +4,21 @@ from .models import BankFiles
 
 
 class ShowAdminForm(forms.ModelForm):
-    class Meta:
-        model = BankFiles
-        exclude = ("files",)
-
     file = forms.FileField(
         widget=forms.ClearableFileInput(attrs={"multiple": True}),
         label="Add Files",
         required=False,
     )
 
-    def clean_photos(self):
+    class Meta:
+        model = BankFiles
+        exclude = ("files",)
 
+    def clean_photos(self):
         for upload in self.files.getlist("file"):
             validate_image_file_extension(upload)
 
     def save_photos(self, show):
-
         for upload in self.files.getlist("file"):
-            photo = BankFiles(files=upload)
-            photo.save()
+            files = BankFiles(files=upload)
+            files.save()

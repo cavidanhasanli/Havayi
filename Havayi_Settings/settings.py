@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'a!=65fl#j4r%h9tt6uc5e^1kgpptzzjfc@aprntz(*aa!r785@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['157.245.214.198']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'user_app.apps.UserAppConfig', # register user_app app
     'dashboard_app.apps.DashboardAppConfig', # register dashboard_app app
     'profile_app.apps.ProfileAppConfig', # register profile_app app
-    'celery'
+    'celery',
 ]
 
 AUTH_USER_MODEL = 'user_app.MyUser'
