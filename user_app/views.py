@@ -27,13 +27,13 @@ def login(request):
                     return redirect('home')
 
                 else:
-                    messages.info(request, 'Invalid credentials')
+                    messages.info(request, 'Belə bir istifadəçi yoxdur')
                     return redirect('login')
             else:
-                messages.info(request, 'Bele bir istifadeci yoxdur..')
+                messages.info(request, 'Siz nömrənizi təsdiqlətməmisiniz.')
                 return redirect('login')
         else:
-            messages.info(request, 'Bele bir istifadeci yoxdur..')
+            messages.info(request, 'Belə bir istifadəçi yoxdur')
             return redirect('login')
 
     else:
@@ -50,10 +50,10 @@ def register(request):
 
         if password1 == password2:
             if MyUser.objects.filter(username=user_name).exists():
-                messages.info(request, 'Username Taken')
+                messages.info(request, 'İstidadəçi adı yanlışdır')
                 return redirect('register')
             elif MyUser.objects.filter(phone=phone_number).exists():
-                messages.info(request, 'Phone Number Taken')
+                messages.info(request, 'Nömrə yanlışdır')
                 return redirect('register')
             else:
                 if phone_number[0:4] == "+994" and phone_number[5:].isdigit() and len(phone_number) == 13:
@@ -71,16 +71,16 @@ def register(request):
 
                     else:
                         filter_user.delete()
-                        messages.info(request, "password not matching!!!!!")
+                        messages.info(request, "Parol yazılışı səhvdir")
                         return redirect('register')
 
 
                 else:
-                    messages.info(request, "phone number not matching...(+994xxxxxxxxx)")
+                    messages.info(request, "Nömrə yazılışı səhvdir...(+994xxxxxxxxx)")
                     return redirect('register')
 
         else:
-            messages.info(request, "password not matching!!!!")
+            messages.info(request, "Parol yazılışı səhvdir")
             return redirect('register')
 
     else:
@@ -105,10 +105,10 @@ def otp_views(request, phone_number):
                 check.delete()
                 return redirect('login')
             else:
-                messages.info(request, "OTP code yanlisdir")
+                messages.info(request, "OTP kod yanlışdır")
                 return redirect('otp', phone_number)
         else:
-            messages.info(request, "OTP code un yazilisi yanlisdir")
+            messages.info(request, "OTP kodun tipi yanlışdır")
             return redirect('otp', phone_number)
 
     return render(request, 'otp.html',context)
