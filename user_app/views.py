@@ -47,6 +47,7 @@ def register(request):
         phone_number = request.POST['phone_number']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
+        print(phone_number)
 
         if password1 == password2:
             if MyUser.objects.filter(username=user_name).exists():
